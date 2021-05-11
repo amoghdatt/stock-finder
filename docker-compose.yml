@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+    redis:
+        image: 'redis:6.2-alpine'
+        command: redis-server --requirepass devpassword
+        volumes:
+            - 'redis:/var/lib/redis/data'
+        ports:
+            - '6379:6379'
+
+    django:
+        build: .
+        ports:
+            - '8000:8000'
+        volumes:
+            - '.:/opt'
+            - './scripts/celery.conf:/etc/supervisor/conf.d/celery.conf'
+            - './scripts/supervisord.conf:/etc/supervisor/supervisord.conf'
+        entrypoint: ["/bin/bash","-c"]
+        command: >
+              "touch /dev/shm/supervisor.sock && 
+              chmod 777 /dev/shm/supervisor.sock && 
+              supervisord -c /etc/supervisor/supervisord.conf && 
+              supervisorctl -c /etc/supervisor/supervisord.conf status &&
+              cd bhavcopy &&  
+              python manage.py makemigrations &&
+              python manage.py migrate && 
+              gunicorn bhavcopy.wsgi --bind 0.0.0.0:8000"
+            
+volumes: 
+    redis:
