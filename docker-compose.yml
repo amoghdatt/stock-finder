@@ -5,7 +5,7 @@ services:
         image: 'redis:6.2-alpine'
         command: redis-server --requirepass devpassword
         volumes:
-            - 'redis:/var/lib/redis/data'
+            - './redis:/data'
         ports:
             - '6379:6379'
 
@@ -28,6 +28,3 @@ services:
               python manage.py migrate && 
               python manage.py collectstatic --no-input &&
               python manage.py runserver 0.0.0.0:8000"
-            
-volumes: 
-    redis:
