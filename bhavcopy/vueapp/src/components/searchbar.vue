@@ -1,15 +1,25 @@
 <template>
     <div class="shadow-lg p-3 mb-5 bg-body rounded searchAndPick">
         <form class="row g-3"> 
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <input @input="searchStock" id="selectedStock" v-model="stockName" type="text" class="form-control" placeholder="Enter name of the stock here." aria-label="Recipient's username" aria-describedby="button-addon2">
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <input class="form-control" id="date" type="date" @input="selectDate">
             </div>
             <div class="col-sm-2">
                 <button @click="handleAdd" class="btn btn-success addBtn" type="button" id="button-addon2">Add</button>
             </div>
+            <div class="col-sm-2">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Selections
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <DisplaySelectedstocks :selectedStocks="selectedStocks"/>
+                </div>
+            </div>
+        </div>
         </form>
         <p></p>
         <small class="text-muted">{{ matchedStockNames.length > 0 ? 'Matching stocks found...': 'No Matching stocks found..'}}</small>
@@ -29,12 +39,14 @@
 
 <script>
 import Matches from './matches'
+import DisplaySelectedstocks from './selectedstocks'
 
 export default{
 
     name: 'Searchbar',
     components:{
-        Matches
+        Matches,
+        DisplaySelectedstocks
     },
     data() {
         return {
@@ -77,7 +89,6 @@ export default{
         handleAdd(){
             const stockObj = {'stockName':this.selectedStock,date:this.date}
             this.selectedStocks.push(stockObj)
-            console.log(this.selectedStocks)
         },
 
         getDetails(){
@@ -92,7 +103,7 @@ export default{
     },
 
     async created(){
-        const response = await fetch('http://localhost:8000/api/stocks')
+        const response = await fetch('http://ec2-3-223-158-5.compute-1.amazonaws.com/api/stocks')
         const { stockNames } = await response.json()
         this.stockNames = stockNames
     },
