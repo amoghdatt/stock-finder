@@ -12,7 +12,7 @@ services:
     django:
         build: .
         ports:
-            - '80:8000'
+            - '8000:8000'
         volumes:
             - '.:/opt'
             - './scripts/celery.conf:/etc/supervisor/conf.d/celery.conf'
