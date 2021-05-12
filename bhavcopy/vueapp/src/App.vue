@@ -49,7 +49,7 @@ export default {
     async fetchStockDetails(data){
 
       const csrftoken = this.getCookie("csrftoken")
-      const response = await fetch('http://localhost:8000/api/stocks/details',{
+      const response = await fetch('http://ec2-3-223-158-5.compute-1.amazonaws.com/api/stocks/details',{
                 method:'POST',
                 headers: {'Content-Type': 'application/json','X-CSRFToken':csrftoken},
                 body:JSON.stringify(data)
