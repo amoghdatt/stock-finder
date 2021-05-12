@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.decorators.csrf import csrf_exempt
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('equity/', include('equity.urls')),
     path('api/', include('api.urls')),
     path('admin/', admin.site.urls),
-] 
+]

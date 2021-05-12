@@ -12,7 +12,7 @@ services:
     django:
         build: .
         ports:
-            - '8000:8000'
+            - '80:8000'
         volumes:
             - '.:/opt'
             - './scripts/celery.conf:/etc/supervisor/conf.d/celery.conf'
@@ -26,6 +26,7 @@ services:
               cd bhavcopy &&  
               python manage.py makemigrations &&
               python manage.py migrate && 
+              python manage.py collectstatic --no-input &&
               python manage.py runserver 0.0.0.0:8000"
             
 volumes: 
