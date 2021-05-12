@@ -103,7 +103,7 @@ export default{
     },
 
     async created(){
-        const response = await fetch('http://ec2-3-223-158-5.compute-1.amazonaws.com/api/stocks')
+        const response = await fetch('http://localhost:8000/api/stocks')
         const { stockNames } = await response.json()
         this.stockNames = stockNames
     },

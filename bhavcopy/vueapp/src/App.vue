@@ -3,13 +3,18 @@
     <div class="search">
       <Searchbar @get-details="fetchStockDetails"/>
     </div>
-    <Stockdetails :stockDetails="stockDetails"/>
+    <div class="row download">
+        <CSVDownloader :stockDetails="stockDetails"/>
+      </div>
+      <p></p>
+      <Stockdetails :stockDetails="stockDetails"/>
   </div>
 </template>
 
 <script>
 import Searchbar from './components/searchbar.vue'
 import Stockdetails from './components/stockdetails'
+import CSVDownloader from './components/csvdownload'
 // import StockCard from './components/stockdetailscard'
 // import Cookies from 'js-cookie'
 
@@ -17,7 +22,8 @@ export default {
   name: 'App',
   components: {
     Searchbar,
-    Stockdetails
+    Stockdetails,
+    CSVDownloader
   },
 
   data(){
@@ -32,7 +38,6 @@ export default {
         const cookies = document.cookie.split(';');
         for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                 break;
@@ -44,7 +49,7 @@ export default {
     async fetchStockDetails(data){
 
       const csrftoken = this.getCookie("csrftoken")
-      const response = await fetch('http://ec2-3-223-158-5.compute-1.amazonaws.com/api/stocks/details',{
+      const response = await fetch('http://localhost:8000/api/stocks/details',{
                 method:'POST',
                 headers: {'Content-Type': 'application/json','X-CSRFToken':csrftoken},
                 body:JSON.stringify(data)
