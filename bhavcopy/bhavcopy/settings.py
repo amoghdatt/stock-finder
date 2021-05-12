@@ -25,6 +25,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+SECRET_KEY='insecurefordev'
+
 #REDIS CREDENTIALS
 REDIS_HOST = 'redis'
 REDIS_PORT = 6379
