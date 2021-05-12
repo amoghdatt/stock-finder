@@ -2,7 +2,7 @@
 This application can query for stock details based on the date downloaded from https://www.bseindia.com/markets/MarketInfo/BhavCopy.aspx
 Additionaly it runs batch job at 18:00 hours everyday to fetch equity zip 
 
-Note: This application is hosted on AWS, to see it in action visit - http://ec2-3-223-158-5.compute-1.amazonaws.com/equity/ (navigate to 'steps to get details section' below to see how to work with it. Also added GIF to display its working)
+Note: This application is hosted on AWS, to see it in action visit - http://ec2-3-223-158-5.compute-1.amazonaws.com/equity/ (navigate to 'steps to get details section' below to see how to work with it. video demonstarion can be found below)
 
 ### Steps to run 
 
@@ -35,3 +35,8 @@ Note: This application is hosted on AWS, to see it in action visit - http://ec2-
 - bhavcopy/api - fetching of details from Redis is exposed as API within this folder
 - bhavcopy/vueapp - contains vue code to render frontend
 - scripts - some import celery scripts and other shell scripts
+
+
+### Demo
+https://user-images.githubusercontent.com/5645152/117943497-d136e980-b329-11eb-992a-562e7da4ba8b.mp4
+
