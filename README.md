@@ -1,6 +1,5 @@
 ### About
-This application can query for stock details based on the date downloaded from https://www.bseindia.com/markets/MarketInfo/BhavCopy.aspx
-
+This application can query for stock details based on the date
 Note: This application is hosted on AWS, to see it in action visit - http://ec2-3-223-158-5.compute-1.amazonaws.com/equity/ (navigate to 'steps to get details section' below to see how to work with it. video demonstarion can be found below)
 
 ### Steps to run 
