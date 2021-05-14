@@ -9,7 +9,7 @@ Note: This application is hosted on AWS, to see it in action visit - http://ec2-
     - `docker-compose - https://docs.docker.com/compose/install/`
 
 - download source code from git
-    - `git clone git@github.com:amoghdatt/stockfinder.git`
+    - `git@github.com:amoghdatt/98F786F7419C16CA3F903EFD7FD91E2BF3B6157ED52C80B8B30E4ABDBA1DD62C.git`
     - `cd stockfinder`
     - `RUN docker-compose up`
 
