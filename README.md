@@ -38,7 +38,5 @@ Note: This application is hosted on AWS, to see it in action visit - http://ec2-
 ### Demo
 
 
-https://user-images.githubusercontent.com/5645152/117972236-7eb8f580-b348-11eb-87ea-3e790cb71611.mp4
-
 
 
